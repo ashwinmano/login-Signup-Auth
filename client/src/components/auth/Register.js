@@ -10,6 +10,8 @@ class Register extends Component {
     super();
     this.state = {
       name: "",
+      lastname:"",
+      dob:"",
       email: "",
       password: "",
       password2: "",
@@ -36,6 +38,9 @@ class Register extends Component {
     this.setState({ [e.target.id]: e.target.value });
   };
 
+  handleCancel(){
+    window.location="/login";
+  }
   onSubmit = e => {
     e.preventDefault();
 
@@ -86,6 +91,31 @@ class Register extends Component {
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
+                  value={this.state.lastname}
+                  error={errors.name}
+                  id="lastname"
+                  type="text"
+                  className={classnames("", {
+                    invalid: errors.name
+                  })}
+                />
+                <label htmlFor="lastname">LastName</label>
+                <span className="red-text">{errors.name}</span>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
+                  value={this.state.dob}
+                 
+                  id="exampleDate"
+                  type="date"
+                 
+                />
+                <label htmlFor="date">Date of Birth</label>
+              </div>
+              <div className="input-field col s12">
+                <input
+                  onChange={this.onChange}
                   value={this.state.email}
                   error={errors.email}
                   id="email"
@@ -126,6 +156,20 @@ class Register extends Component {
                 <span className="red-text">{errors.password2}</span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                <button
+                  style={{
+                    width: "150px",
+                    borderRadius: "3px",
+                    letterSpacing: "1.5px",
+                    marginTop: "1rem",
+                    marginLeft:'6rem',
+                    marginRight: "5rem"
+                  }}
+                  onClick={this.handleCancel}
+                  className="btn btn-large hoverable danger "
+                >
+                  Cancel
+                </button>
                 <button
                   style={{
                     width: "150px",
